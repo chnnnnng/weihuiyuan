@@ -1,0 +1,2 @@
+/* pages/establishcard/establishcard.wxss */
+@import '../../static/style/weui.wxss';

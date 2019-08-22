@@ -1,0 +1,44 @@
+<!--pages/cardInfo/cardInfo.wxml-->
+<card-component card-number="{{card.id}}" card-name="{{card.card_name}}" card-date="{{card.initial_date}}" card-type="{{card.type}}" bindtap='cardTapped' bindlongpress='cardLongTapped' data-cardid="{{card.id}}"></card-component>
+
+<view class="row-flex-view">
+<view wx:if="{{card.type == 1 || card.type == 2}}">
+<view id="balance-label" class='cardinfo-label'>余额</view>
+<view id="balance-value" class='cardinfo-value'>{{card.balance}}元</view>
+</view>
+<view wx:if="{{card.type == 0 || card.type == 2}}">
+<view id="balance-label" class='cardinfo-label'>积分</view>
+<view id="balance-value" class='cardinfo-value'>{{card.credit}}分</view>
+</view>
+<view wx:if="{{card.type == 3}}">
+<view id="balance-label" class='cardinfo-label'>优惠</view>
+<view id="balance-value" class='cardinfo-value'>3张优惠券</view>
+</view>
+</view>
+
+<view class="row-flex-view">
+<view wx:if="{{card.type == 1 || card.type == 2}}">
+<view class='cardinfo-button' bindtap='onPayCodeTapped'>余额付款</view>
+</view>
+<view wx:if="{{card.type == 0 || card.type == 2}}">
+<view class='cardinfo-button' bindtap='onDecreditCodeTapped'>积分付款</view>
+</view>
+<view wx:if="{{card.type == 3}}">
+<view class='cardinfo-button'>查看</view>
+</view>
+</view>
+
+<view class="row-flex-view">
+<view wx:if="{{card.type == 1 || card.type == 2}}">
+<view class='cardinfo-button' bindtap='onDepositCodeTapped'>充值</view>
+</view>
+<view wx:if="{{card.type == 0 || card.type == 2}}">
+<view class='cardinfo-button' bindtap='onCreditCodeTapped'>积分</view>
+</view>
+</view>
+
+<view id="table-view">
+<view class="table-item" bindtap='onCardInfoCodeTapped'>会员卡二维码</view>
+<view class="table-item" bindtap='onBillTapped'>流水账</view>
+<view class="table-item" bindtap='onMerchantInfoTapped'>商铺信息</view>
+</view>

@@ -1,0 +1,11 @@
+<!-- 这是自定义组件的内部WXML结构 -->
+<view class="card card-type-{{cardType}}">
+  <view class="card-number">卡号:{{cardNumber}}</view>
+  <view class="card-name">{{cardName}}</view>
+  <view class="card-date">{{cardDate}}办</view>
+  <view class="card-type" wx:if="{{cardType == 0}}">积分卡</view>
+  <view class="card-type" wx:elif="{{cardType == 1}}">充值卡</view>
+  <view class="card-type" wx:elif="{{cardType == 2}}">积分充值卡</view>
+  <view class="card-type" wx:elif="{{cardType == 3}}">优惠卡</view>
+  <view class="card-type" wx:else>其他卡</view>
+</view>

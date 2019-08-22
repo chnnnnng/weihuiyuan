@@ -1,0 +1,16 @@
+<!--pages/pocket.wxml-->
+<view style='text-align:center'>
+
+<view id="card-scan">
+<image src='/static/imgs/scan.png' bindtap='scanTapped'></image>
+<view id="card-scan-text">扫一扫添加会员卡</view>
+</view>
+
+<view animation="{{cardAnm}}" style='position:absolute;left:-50px'>
+<view wx:for="{{cards}}">
+  <card-component card-number="{{item.id}}" card-name="{{item.card_name}}" card-date="{{item.initial_date}}" card-type="{{item.type}}" bindtap='cardTapped' bindlongpress='cardLongTapped' data-cardid="{{item.id}}"></card-component>
+</view>
+</view>
+
+
+</view>

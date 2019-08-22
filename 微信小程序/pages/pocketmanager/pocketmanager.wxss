@@ -1,0 +1,2 @@
+/* pages/pocketmanager/pocketmanager.wxss */
+@import '../../static/style/weui.wxss';

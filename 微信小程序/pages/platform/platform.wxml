@@ -1,0 +1,202 @@
+<!--pages/platform/platform.wxml-->
+<view class="page">
+<view class="page__bd">
+
+  <view class="weui-cells__title">会员卡信息</view>
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+          <view class="weui-cell__bd">卡号</view>
+          <view class="weui-cell__ft">{{card.id}}</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__bd">卡名</view>
+          <view class="weui-cell__ft">{{card.card_name}}</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__bd">卡别</view>
+          <view class="weui-cell__ft" wx:if="{{card.type == 0}}">积分</view>
+          <view class="weui-cell__ft" wx:if="{{card.type == 1}}">充值</view>
+          <view class="weui-cell__ft" wx:if="{{card.type == 2}}">积分充值</view>
+          <view class="weui-cell__ft" wx:if="{{card.type == 3}}">优惠</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__bd">开卡日期</view>
+          <view class="weui-cell__ft">{{card.initial_date}}</view>
+      </view>
+      <view class="weui-cell" wx:if="{{card.type == 0 || card.type == 2}}">
+          <view class="weui-cell__bd">积分</view>
+          <view class="weui-cell__ft">{{card.credit}}</view>
+      </view>
+      <view class="weui-cell" wx:if="{{card.type == 1 || card.type == 2}}">
+          <view class="weui-cell__bd">余额</view>
+          <view class="weui-cell__ft">{{card.balance}}</view>
+      </view>
+      <navigator url="/pages/bill/bill?card={{card.id}}&name={{card.card_name}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">账单详情</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>  
+  </view>
+  <view class="weui-cells__title">收银台</view>
+  <view class="weui-cells weui-cells_after-title">
+      <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='onPayDiaShowTapped' wx:if="{{action == 'pay'}}">
+          <view class="weui-cell__bd">收款</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+      <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='onDepositDiaShowTapped' wx:if="{{action == 'deposit' || action == 'info'}}">
+          <view class="weui-cell__bd">充值</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator> 
+      <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='onCreditDiaShowTapped' wx:if="{{action == 'credit' || action == 'info'}}">
+          <view class="weui-cell__bd">积分</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator> 
+      <navigator class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap='onDecreditDiaShowTapped' wx:if="{{action == 'decredit'}}">
+          <view class="weui-cell__bd">扣除积分</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator> 
+  </view>
+
+
+
+  <view wx:if="{{isPayDiaShow}}">
+      <view class="weui-mask" bindtap="closeDialog"></view>
+      <view class="weui-half-screen-dialog" catchtap="stopEvent">
+        <view class="weui-half-screen-dialog__hd">
+          <view class="weui-half-screen-dialog__hd__side">
+            <view bindtap="closeDialog" class="weui-icon-btn weui-icon-btn_close">关闭</view>
+          </view>
+          <view class="weui-half-screen-dialog__hd__main">
+            <text class="weui-half-screen-dialog__title">收款</text>
+            <text class="weui-half-screen-dialog__subtitle">通过会员卡余额收款</text>
+          </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd">
+          <view class="weui-half-screen-dialog__tips">
+                会员卡余额：{{card.balance}}元
+          </view>
+          <view class="weui-cells">
+                <view class="weui-cell" >
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">金额</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入金额" type='digit' bindinput='onPayInput'/>
+                  </view>
+                  <view class="weui-cell__ft" wx:if="{{status == 11}}">
+                    <icon type="warn" size="23" color="#E64340"></icon>
+                  </view>
+                </view>
+              </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button type="primary" class="weui-btn" wx:if="{{status == 100}}" bindtap='onPayTapped'>确认收款</button>
+            <button type="warn" class="weui-btn" wx:if="{{status == 11}}">余额不足</button>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{isDepositDiaShow}}">
+      <view class="weui-mask" bindtap="closeDialog"></view>
+      <view class="weui-half-screen-dialog" catchtap="stopEvent">
+        <view class="weui-half-screen-dialog__hd">
+          <view class="weui-half-screen-dialog__hd__side">
+            <view bindtap="closeDialog" class="weui-icon-btn weui-icon-btn_close">关闭</view>
+          </view>
+          <view class="weui-half-screen-dialog__hd__main">
+            <text class="weui-half-screen-dialog__title">充值</text>
+            <text class="weui-half-screen-dialog__subtitle">向会员卡余额充值</text>
+          </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd">
+          <view class="weui-half-screen-dialog__tips">
+                会员卡余额：{{card.balance}}元
+          </view>
+          <view class="weui-cells">
+                <view class="weui-cell" >
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">金额</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入金额" type='digit' bindinput='onDepositInput'/>
+                  </view>
+                </view>
+          </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button type="primary" class="weui-btn" bindtap='onDepositTapped'>确认充值</button>
+        </view>
+      </view>
+    </view>
+
+
+    <view wx:if="{{isCreditDiaShow}}">
+      <view class="weui-mask" bindtap="closeDialog"></view>
+      <view class="weui-half-screen-dialog" catchtap="stopEvent">
+        <view class="weui-half-screen-dialog__hd">
+          <view class="weui-half-screen-dialog__hd__side">
+            <view bindtap="closeDialog" class="weui-icon-btn weui-icon-btn_close">关闭</view>
+          </view>
+          <view class="weui-half-screen-dialog__hd__main">
+            <text class="weui-half-screen-dialog__title">积分</text>
+            <text class="weui-half-screen-dialog__subtitle">对会员卡积分</text>
+          </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd">
+          <view class="weui-half-screen-dialog__tips">
+                会员卡积分：{{card.credit}}分
+          </view>
+          <view class="weui-cells">
+                <view class="weui-cell" >
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">积分</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入数值" type='number' bindinput='onCreditInput'/>
+                  </view>
+                </view>
+              </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button type="primary" class="weui-btn" bindtap='onCreditTapped'>确认</button>
+        </view>
+      </view>
+    </view>
+
+
+    <view wx:if="{{isDecreditDiaShow}}">
+      <view class="weui-mask" bindtap="closeDialog"></view>
+      <view class="weui-half-screen-dialog" catchtap="stopEvent">
+        <view class="weui-half-screen-dialog__hd">
+          <view class="weui-half-screen-dialog__hd__side">
+            <view bindtap="closeDialog" class="weui-icon-btn weui-icon-btn_close">关闭</view>
+          </view>
+          <view class="weui-half-screen-dialog__hd__main">
+            <text class="weui-half-screen-dialog__title">扣除积分</text>
+          </view>
+        </view>
+        <view class="weui-half-screen-dialog__bd">
+          <view class="weui-half-screen-dialog__tips">
+                会员卡积分：{{card.credit}}分
+          </view>
+          <view class="weui-cells">
+                <view class="weui-cell" >
+                  <view class="weui-cell__hd">
+                    <view class="weui-label">数值</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入数值" type='digit' bindinput='onDecreditInput'/>
+                  </view>
+                  <view class="weui-cell__ft" wx:if="{{status == 12}}">
+                    <icon type="warn" size="23" color="#E64340"></icon>
+                  </view>
+                </view>
+              </view>
+        </view>
+        <view class="weui-half-screen-dialog__ft">
+            <button type="primary" class="weui-btn" wx:if="{{status == 100}}" bindtap='onDecreditTapped'>确认积分收款</button>
+            <button type="warn" class="weui-btn" wx:if="{{status == 12}}">积分不足</button>
+        </view>
+      </view>
+    </view>
+</view>
+</view>

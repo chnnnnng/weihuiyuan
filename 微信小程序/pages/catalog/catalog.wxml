@@ -1,0 +1,17 @@
+<!--Catalog.wxml-->
+<view class="borderless-contailer">
+  <view class='nav-left'>
+    <view wx:for="{{cla}}">
+      <view class="nav-left-item {{curTopCla == item.topid ? 'active-nav-item' : ''}}" bindtap='switchRightItem' data-id="{{item.topid}}">{{item.topname}}</view>
+    </view>
+  </view>
+  
+
+  <view wx:for="{{cla}}">
+    <scroll-view scroll-y class="nav-right" wx:if="{{curTopCla == item.topid}}">
+        <view wx:for="{{item.subcla}}" wx:for-item="sub">
+          <view class="nav-right-item" bindtap='rightItemTapped' data-id="{{sub.subid}}">{{sub.subname}}</view>
+        </view>
+    </scroll-view>
+  </view>
+</view>

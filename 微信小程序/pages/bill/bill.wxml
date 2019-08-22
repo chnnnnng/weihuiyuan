@@ -1,0 +1,38 @@
+<!--pages/bill/bill.wxml-->
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cells__title">{{name}}·流水账</view>
+        <view class="weui-cells weui-cells_after-title" >
+          <block wx:for="{{bills}}" wx:for-index="idx" wx:for-item="bill">
+            <navigator url="/pages/msg/msg?transcation={{bill.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:if="{{bill.status == 1}}">
+                <view class="weui-cell__hd" wx:if="{{bill.type == 0}}" style='color:#000000'>余额</view>
+                <view class="weui-cell__hd" wx:if="{{bill.type == 1}}" style='color:#fb7c85'>余额</view>
+                <view class="weui-cell__hd" wx:if="{{bill.type == 2}}" style='color:#000000'>积分</view>
+                <view class="weui-cell__hd" wx:if="{{bill.type == 3}}" style='color:#fb7c85'>积分</view>
+                
+                <view class="weui-cell__bd" wx:if="{{bill.type == 0}}" style='color:#000000;margin-left:10px'>+{{bill.amount}}</view>
+                <view class="weui-cell__bd" wx:if="{{bill.type == 1}}" style='color:#fb7c85;margin-left:10px'>-{{bill.amount}}</view>
+                <view class="weui-cell__bd" wx:if="{{bill.type == 2}}" style='color:#000000;margin-left:10px'>+{{bill.amount}}</view>
+                <view class="weui-cell__bd" wx:if="{{bill.type == 3}}" style='color:#fb7c85;margin-left:10px'>-{{bill.amount}}</view>
+
+                <view class="weui-cell__ft weui-cell__ft_in-access">待确认</view>
+            </navigator>
+
+            <view class="weui-cell weui-cell_example " wx:if="{{bill.status == 2}}">
+                <view class="weui-cell__hd" wx:if="{{bill.type == 0}}" style='color:#000000'>余额</view>
+                <view class="weui-cell__hd" wx:if="{{bill.type == 1}}" style='color:#fb7c85'>余额</view>
+                <view class="weui-cell__hd" wx:if="{{bill.type == 2}}" style='color:#000000'>积分</view>
+                <view class="weui-cell__hd" wx:if="{{bill.type == 3}}" style='color:#fb7c85'>积分</view>
+
+                <view class="weui-cell__bd" wx:if="{{bill.type == 0}}" style='color:#000000;margin-left:10px'>+{{bill.amount}}</view>
+                <view class="weui-cell__bd" wx:if="{{bill.type == 1}}" style='color:#fb7c85;margin-left:10px'>-{{bill.amount}}</view>
+                <view class="weui-cell__bd" wx:if="{{bill.type == 2}}" style='color:#000000;margin-left:10px'>+{{bill.amount}}</view>
+                <view class="weui-cell__bd" wx:if="{{bill.type == 3}}" style='color:#fb7c85;margin-left:10px'>-{{bill.amount}}</view>
+                <view class="weui-cell__ft" wx:if="{{bill.mark !== ''}}">{{bill.mark}}</view>
+                <view class="weui-cell__ft" wx:if="{{bill.mark == ''}}">{{bill.time}}</view>
+            </view>
+
+          </block>
+        </view>
+    </view>
+</view>

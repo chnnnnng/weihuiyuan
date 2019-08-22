@@ -1,0 +1,60 @@
+/* pages/result.wxss */
+#result-map{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+}
+
+#result-backhomebutton{
+  position: fixed;
+  top: 20rpx;
+  left: 20rpx;
+  width: 10vw;
+  height: 10vw;
+}
+
+#result-list{
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  background-color: #FFF;
+}
+
+#result-none{
+  position: absolute;
+  top: 50vh;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  background-color: #2fc0a4;
+  text-align: center;
+  color: #FFF;
+  font-weight: bolder;
+  font-size: 2em;
+  line-height: 50vh;
+}
+
+.result-item{
+  width: 100vw;
+  border-bottom: 1px #ccc solid;
+  position: relative;
+}
+
+.result-item-pointname{
+  position: absolute;
+  top: 1em;
+  left:1em;
+  color: #2fc0a4;
+}
+.result-item-knockdoor{
+  position: absolute;
+  top:1em;
+  right: 1em;
+}
+.result-item-contactname{
+  
+}

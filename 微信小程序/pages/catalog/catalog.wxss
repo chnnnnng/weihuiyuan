@@ -1,0 +1,40 @@
+/* Catalog.wxss */
+.nav-left{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36vw;
+  height: 100vh;
+  background-color: #2fc0a4;
+}
+.nav-right{
+  position: absolute;
+  top: 0;
+  left: 36vw;
+  width: 64vw;
+  height: 100vh;
+  background-color: #FFF;
+  border-left: 1px #ccc solid;
+}
+
+.nav-left-item{
+  height: 3em;
+  line-height: 3em;
+  border-bottom: 1px #fff solid;
+  padding-left: 1em;
+  color: #FFF;
+  font-weight: bold;
+}
+
+.nav-right-item{
+  height: 3em;
+  line-height: 3em;
+  border-bottom: 1px #ccc solid;
+  padding-left: 1em;
+  color: #2fc0a4;
+}
+
+.active-nav-item{
+  background-color:#56b6a3;
+  color: #fff;
+}

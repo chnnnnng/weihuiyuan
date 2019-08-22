@@ -1,0 +1,2 @@
+/* pages/msg/msg.wxss */
+@import '../../static/style/weui.wxss';

@@ -1,0 +1,6 @@
+<!--pages/qrcode/qrcode.wxml-->
+<view id='qrcode-container'>
+<view id="qrcode-title">{{title}}</view>
+<canvas id='qrcode' class='canvas' style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;" canvas-id='canvas'></canvas>
+<view id="qrcode-caption">{{caption}}</view>
+</view>

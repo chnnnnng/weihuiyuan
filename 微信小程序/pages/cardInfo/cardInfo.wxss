@@ -1,0 +1,69 @@
+/* pages/cardInfo/cardInfo.wxss */
+.row-flex-view{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+}
+.cardinfo-label{
+  width: 100%;
+  display:block;
+  height: 0.8em;
+  text-align: center;
+  font-size: 0.8em;
+  line-height: 0.8em;
+  padding-top: 10px;
+  color: #666;
+}
+.cardinfo-value{
+  width: 100%;
+  display: block;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  color: #e03636;
+}
+.cardinfo-button{
+  width: 100%;
+  display: block;
+  height: 1em;
+  line-height: 1em;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #e03636;
+}
+.space{
+  width: 100vw;
+  display:block;
+  height: 10px;
+}
+.row-flex-view>view{
+  display: block;
+  flex: 1;
+  height: auto;
+  border: 1px solid rgb(235, 235, 235);
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #bbbbbb;
+  font-weight: bold;
+  background-color: #fdfdfd;
+}
+#table-view{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+#table-view>.table-item{
+  display: block;
+  flex: 1;
+  width: 100vw;
+  padding-left: 20px;
+  font-size: 1em;
+  line-height: 3em;
+  height: 3em;
+  border-bottom: 1px solid #ccc;
+  color: #666;
+}

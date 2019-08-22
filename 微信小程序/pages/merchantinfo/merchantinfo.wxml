@@ -1,0 +1,42 @@
+<!--pages/merchantinfo/merchantinfo.wxml-->
+<view class="page">
+<view class="page__bd">
+        <view class="weui-cells__title">商铺管理·商铺信息</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">商铺名</view>
+                <view class="weui-cell__ft">{{merchant.name}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">负责人</view>
+                <view class="weui-cell__ft">{{merchant.owner_id}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">地址</view>
+                <view class="weui-cell__ft">{{merchant.location}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">类型</view>
+                <view class="weui-cell__ft">{{merchant.type}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">合同起始</view>
+                <view class="weui-cell__ft">{{merchant.contract_start_date}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">合同终止</view>
+                <view class="weui-cell__ft">{{merchant.contract_terminal_date}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">评级</view>
+                <view class="weui-cell__ft">{{merchant.credit_level}}</view>
+            </view>
+        </view>
+</view>
+       
+<view class="weui-footer weui-footer_fixed-bottom" wx:if="{{isEditable}}">
+    <view class="weui-footer__links">
+        <navigator url="/pages/merchantinfo/edit" class="weui-footer__link">编辑信息</navigator>
+    </view>
+</view>
+</view>

@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/pocket/pocket",
+    "pages/find/find",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/catalog/catalog",
+    "pages/result/result",
+    "pages/filldetail/filldetail",
+    "pages/cardInfo/cardInfo",
+    "pages/qrcode/qrcode",
+    "pages/mine/mine",
+    "pages/platform/platform",
+    "pages/msg/msg",
+    "pages/bill/bill",
+    "pages/pocketmanager/pocketmanager",
+    "pages/merchantcards/merchantcards",
+    "pages/establishcard/establishcard",
+    "pages/merchantinfo/merchantinfo",
+    "pages/merchantinfo/edit",
+    "pages/merchantmember/merchantmember",
+    "pages/merchantmember/add"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "闪现修",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#FF9055",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "static/imgs/pocket-h.png",
+        "iconPath": "static/imgs/pocket.png",
+        "pagePath": "pages/pocket/pocket",
+        "text": "卡包"
+      },
+      {
+        "selectedIconPath": "static/imgs/account-h.png",
+        "iconPath": "static/imgs/account.png",
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  }
+}

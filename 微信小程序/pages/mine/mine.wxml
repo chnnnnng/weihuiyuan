@@ -1,0 +1,96 @@
+<!--pages/mine/mine.wxml-->
+<view class="page">
+<view class="page__bd">
+  <view class="weui-cells__title">我的信息</view>
+  <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell">
+          <view class="weui-cell__bd">微会员ID</view>
+          <view class="weui-cell__ft">{{id}}</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__bd">真实姓名</view>
+          <view class="weui-cell__ft">{{realName}}</view>
+      </view>
+      <view class="weui-cell">
+          <view class="weui-cell__bd">用户类别</view>
+          <view class="weui-cell__ft" wx:if="{{identity == 0}}">普通用户</view>
+          <view class="weui-cell__ft" wx:if="{{identity == 1}}">商铺人员</view>
+          <view class="weui-cell__ft" wx:if="{{identity == 2}}">商铺管理员</view>
+          <view class="weui-cell__ft" wx:if="{{identity == 3}}">运营人员</view>
+      </view>
+      <navigator url="/pages/pocketmanager/pocketmanager" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">隐藏的会员卡</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+  </view>
+
+  <view class="weui-cells__title" wx:if="{{identity == 1 || identity == 2}}">商铺</view>
+  <view class="weui-cells weui-cells_after-title" wx:if="{{identity == 1 || identity == 2}}">
+      <navigator bindtap='onScanTapped' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">扫码</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator> 
+      <navigator bindtap='onCardInfoTapped' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">卡号查询</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator> 
+      <navigator url="/pages/merchantcards/merchantcards" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">快捷开卡</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>   
+  </view>
+<view class="weui-cells__title" wx:if="{{identity == 2}}">商铺管理</view>
+  <view class="weui-cells weui-cells_after-title" wx:if="{{identity == 2}}">
+      <navigator url="/pages/merchantinfo/merchantinfo" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">商铺信息管理</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>  
+      <navigator url="/pages/merchantmember/merchantmember" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">商铺人员管理</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>  
+      <navigator url="/pages/merchantcards/merchantcards" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">会员卡管理</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>  
+  </view>
+
+  <view class="weui-cells__title" wx:if="{{identity == 3}}">运营</view>
+  <view class="weui-cells weui-cells_after-title" wx:if="{{identity == 3}}">
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">用户管理</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator> 
+      <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd">商铺管理</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>  
+  </view>
+
+
+  <view wx:if="{{isInputDiaShow}}">
+          <view class="weui-mask" bindtap="closeDialog"></view>
+          <view class="weui-dialog__wrp" bindtap="closeDialog">
+              <view class="weui-dialog" catchtap="stopEvent">
+                <view class="weui-dialog__hd">
+                  <view class="weui-dialog__title">{{inputDiaTitle}}</view>
+                </view>
+                <view class="weui-dialog__bd">
+                  <view class="weui-cells">
+                    <view class="weui-cell" >
+                      <view class="weui-cell__bd">
+                        <input class="weui-input" bindinput='onInputDiaInput' type='number'/>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="weui-dialog__ft">
+                    <view class="weui-dialog__btn weui-dialog__btn_default" bindtap="closeDialog">取消</view>
+                    <view class="weui-dialog__btn" bindtap="doDia">确定</view>
+                </view>
+              </view>
+          </view>
+        </view>
+</view>
+</view>
+

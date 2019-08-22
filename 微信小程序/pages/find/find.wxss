@@ -1,0 +1,21 @@
+/* pages/find.wxss */
+#find-map{
+  flex-grow: 1;
+  width: 100%;
+}
+#find-floatbutton{
+  width: 84vw;
+  background-color: #2fc0a4
+}
+#find-floatbutton-coverview{
+  position: fixed;
+  bottom: 8vw;
+  width: 100%;
+}
+#find-backhomebutton{
+  position: fixed;
+  top: 20rpx;
+  left: 20rpx;
+  width: 10vw;
+  height: 10vw;
+}

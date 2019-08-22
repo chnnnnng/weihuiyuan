@@ -1,0 +1,2 @@
+/* pages/merchantmember/add.wxss */
+@import '../../static/style/weui.wxss';

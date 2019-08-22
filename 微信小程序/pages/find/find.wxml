@@ -1,0 +1,9 @@
+<!--pages/find.wxml-->
+<view class='borderless-container'>
+<map id ="find-map" longitude='{{location.lon}}' latitude='{{location.lat}}' markers='{{markers}}'>
+  <cover-view id='find-floatbutton-coverview'>
+    <button id='find-floatbutton' type='primary' bindtap='mewant'>我要修…</button>
+  </cover-view>
+  <cover-image id="find-backhomebutton" src='/static/imgs/backhomebutton.png' bindtap='backhome'></cover-image>
+</map>
+</view>

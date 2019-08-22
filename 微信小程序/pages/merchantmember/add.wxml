@@ -1,0 +1,33 @@
+<!--pages/merchantmember/add.wxml-->
+<view class="page">
+    <view class="page__bd">
+      <view class="weui-cells__title">商铺管理·新成员</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">用户ID</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入用户ID" bindinput='onIdInput'/>
+                </view>
+            </view>
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">用户姓名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入用户真实姓名以验证" bindinput='onNameInput'/>
+                </view>
+            </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="onSubmit">确定</button>
+        </view>
+           
+        </view>
+        <view class="weui-cells__tips">切勿将无关人员设为商铺成员。</view>
+    </view>
+    <view class="weui-footer weui-footer_fixed-bottom">
+      <view class="weui-footer__text">Copyright © 2019 微会员</view>
+    </view>
+</view>
+

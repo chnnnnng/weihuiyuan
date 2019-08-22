@@ -1,0 +1,11 @@
+/* filldetail.wxss */
+.txt-input{
+  background-color: #FFF;
+  height: 1em;
+  line-height: 1em;
+  width: 100vw;
+  padding: 13px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px #ccc solid;
+}

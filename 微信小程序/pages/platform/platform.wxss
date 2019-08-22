@@ -1,0 +1,2 @@
+/* pages/platform/platform.wxss */
+@import '../../static/style/weui.wxss';

@@ -1,0 +1,5 @@
+<!--filldetail.wxml-->
+<view style="display:block;width:100vw;text-align:center;padding-top:2vh">请完善用户信息</view>
+<input class="txt-input" name="phone" placeholder="手机号" bindinput='onphoneinput' auto-focus/>
+<input class="txt-input" name="realname" placeholder="真实姓名" bindinput='onrealnameinput'/>
+<button type="primary" open-type="getUserInfo" bindgetuserinfo='onSubmit'>授权登录</button>

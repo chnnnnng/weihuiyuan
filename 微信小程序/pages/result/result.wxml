@@ -1,0 +1,19 @@
+<!--pages/result.wxml-->
+<view class='borderless-container'>
+<map id ="result-map" longitude='{{location.lon}}' latitude='{{location.lat}}' markers='{{markers}}'>
+  <cover-image id="result-backhomebutton" src='/static/imgs/backhomebutton.png' bindtap='backhome'></cover-image>
+</map>
+<view wx:if="{{items==null}}" id = "result-none">附近无维修点(T_T)</view>
+<scroll-view wx:else scroll-y id = "result-list">
+<view wx:for="{{items}}">
+<view class="result-item {{curPoint == item.pointid ? 'active-result-item' : ''}}" bindtap='highlightResultItem' data-id="{{item.pointid}}">
+<view class='result-item-pointname'>{{item.pointname}}</view>
+<view class='result-item-knockdoor'>{{item.knockdoor == true ? "上门" : "不上门"}}</view>
+<view class='result-item-contactname'>{{item.contactname}}</view>
+<view class='result-item-phone'>{{item.phone}}</view>
+<view class='result-item-location'>{{item.location}}</view>
+<view class='result-item-timeavailable'>{{item.timeavailable}}</view>
+</view>
+</view>
+</scroll-view>
+</view>

@@ -1,0 +1,58 @@
+<!--pages/merchantinfo/edit.wxml-->
+<view class="page">
+    <view class="page__bd">
+      <view class="weui-cells__title">商铺管理·编辑商铺信息</view>
+        <view class="weui-cells weui-cells_after-title">
+
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">商铺名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" value="{{merchant.name}}" bindinput='onNameInput'/>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">负责人</view>
+                <view class="weui-cell__ft">{{merchant.owner_id}}</view>
+            </view>
+            <view class="weui-cell ">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">地址</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" value="{{merchant.location}}" bindinput='onLocationInput'/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">类型</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="onTypeChange" value="{{typeIndex}}" range="{{types}}">
+                        <view class="weui-select weui-select_in-select-after">{{types[typeIndex]}}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">合同起始</view>
+                <view class="weui-cell__ft">{{merchant.contract_start_date}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">合同终止</view>
+                <view class="weui-cell__ft">{{merchant.contract_terminal_date}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">评级</view>
+                <view class="weui-cell__ft">{{merchant.credit_level}}</view>
+            </view>
+          <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="onSubmit">确定</button>
+        </view>
+           
+        </view>
+    </view>
+    <view class="weui-footer weui-footer_fixed-bottom">
+      <view class="weui-footer__text">Copyright © 2019 微会员</view>
+    </view>
+</view>
